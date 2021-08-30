@@ -68,9 +68,10 @@ for i in range(number_epochs):
 	params=gradient_descent(params, samples,y,alfa)	
 	error_calculations(params, samples, y)  
 
+print("Last parameters",params)
 
 	
-
+print("Mean squared error", ERRORS[-1])
 # Plot of the mse
 plt.plot(ERRORS)
 plt.show()
