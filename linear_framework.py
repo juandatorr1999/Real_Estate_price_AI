@@ -31,41 +31,41 @@ cleaned_df = df[["House Age", "Distance to MRT station", "Number Convinience Sto
 
 print(cleaned_df.head())
 
-real_state_train, real_state_test = train_test_split(cleaned_df, test_size=0.1, train_size=0.9, shuffle=True)
+real_estate_train, real_estate_test = train_test_split(cleaned_df, test_size=0.1, train_size=0.9, shuffle=True)
 
 print("train")
-real_state_train.head()
-print(len(real_state_train))
+real_estate_train.head()
+print(len(real_estate_train))
 print("test")
-real_state_test.head()
-print(len(real_state_test))
+real_estate_test.head()
+print(len(real_estate_test))
 
-x_real_state_train = real_state_train[["House Age", "Distance to MRT station", "Number Convinience Stores","Latitude","Longitude"]]
-x_real_state_test = real_state_test[["House Age", "Distance to MRT station", "Number Convinience Stores","Latitude","Longitude"]]
+x_real_estate_train = real_estate_train[["House Age", "Distance to MRT station", "Number Convinience Stores","Latitude","Longitude"]]
+x_real_estate_test = real_estate_test[["House Age", "Distance to MRT station", "Number Convinience Stores","Latitude","Longitude"]]
 
-y_real_state_train = real_state_train["Price UPA"]
-y_real_state_test = real_state_test["Price UPA"]
+y_real_estate_train = real_estate_train["Price UPA"]
+y_real_estate_test = real_estate_test["Price UPA"]
 
 
 regr = linear_model.LinearRegression()
 
 
-regr.fit(x_real_state_train, y_real_state_train)
+regr.fit(x_real_estate_train, y_real_estate_train)
 
 
-real_state_y_pred = regr.predict(x_real_state_test)
+real_estate_y_pred = regr.predict(x_real_estate_test)
 
 
 print('Coefficients: \n', regr.coef_)
 
-print('Mean squared error: %.2f', mean_squared_error(y_real_state_test, real_state_y_pred))
+print('Mean squared error: %.2f', mean_squared_error(y_real_estate_test, real_estate_y_pred))
 
-print('Coefficient of determination: %.2f', r2_score(y_real_state_test, real_state_y_pred))
+print('Coefficient of determination: %.2f', r2_score(y_real_estate_test, real_estate_y_pred))
 
 
 
-plt.scatter(x_real_state_test["House Age"], y_real_state_test,  color='black')
-plt.plot(x_real_state_test["House Age"],real_state_y_pred , color='blue', linewidth=3)
+plt.scatter(x_real_estate_test["House Age"], y_real_estate_test,  color='black')
+plt.plot(x_real_estate_test["House Age"],real_estate_y_pred , color='blue', linewidth=3)
 
 plt.xticks(())
 plt.yticks(())
